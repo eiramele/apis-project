@@ -17,3 +17,20 @@ const getDogsImgs = function () {
 };
 
 btnDogs.addEventListener("click", getDogsImgs);
+
+const catsDiv = document.getElementById("catsDiv");
+const btnCats = document.querySelector(".cats");
+
+const getCatsImgs = function () {
+  fetch(catsUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => {
+        const image = document.createElement("img");
+        image.src = element.url;
+        catsDiv.append(image);
+      });
+    });
+};
+
+btnCats.addEventListener("click", getCatsImgs);
